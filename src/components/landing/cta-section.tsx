@@ -8,15 +8,15 @@ export function CTASection() {
     <section className="py-20 bg-gradient-to-b from-background/90 to-background">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2">
+          <div className="space-y-2 text-center">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Ready to Transform Your Security Testing?
             </h2>
-            <p className="max-w-[700px] text-muted-foreground md:text-xl">
+            <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
               Join the revolution in AI-powered penetration testing
             </p>
           </div>
-          <div className="flex flex-col gap-2 min-[400px]:flex-row pt-4">
+          <div className="flex flex-col gap-2 items-center justify-center pt-4">
             {FEATURES.REQUEST_EARLY_ACCESS && (
               <Button
                 size="lg"
