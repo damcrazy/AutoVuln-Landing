@@ -36,14 +36,14 @@ export function RoadmapSection() {
               title="Self-Learning Agents"
               description="Advanced agents that adapt to new attack methodologies and the latest bug-finding reports. Continuously improving security coverage."
               position="right"
-              timeframe="Q4 2025"
+              timeframe="April 2025"
             />
             <RoadmapCard
               icon={<FileJson className={`h-10 w-10 text-${COLORS.accent}`} />}
               title="Swagger File Creation"
               description="Automatically generate Swagger files based on the Exploring Agent's interaction with site features, simplifying API documentation."
               position="left"
-              timeframe="Q5 2025"
+              timeframe="July 2025"
             />
             <div className="hidden md:block" />
             <div className="hidden md:block" />
@@ -52,7 +52,7 @@ export function RoadmapSection() {
               title="DevOps Integration"
               description="Seamlessly incorporate AutoVuln into SDLC pipelines for proactive security. Automate security testing at every stage of development."
               position="right"
-              timeframe="Q6 2025"
+              timeframe="October 2025"
             />
           </div>
         </div>
