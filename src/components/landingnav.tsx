@@ -17,6 +17,11 @@ import {
 
 const LandingNavLinks = [
   {
+    label: "AI AT WORK",
+    href: "/#ai-at-work",
+    section: "ai-at-work",
+  },
+  {
     label: "FEATURES",
     href: "/#features",
     section: "features",
@@ -26,7 +31,6 @@ const LandingNavLinks = [
     href: "/#timeline",
     section: "timeline",
   },
-
 ]
 
 interface NavLink {
@@ -59,7 +63,10 @@ export function LandingNav() {
       e.preventDefault()
       const element = document.getElementById(link.section)
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
+        // Add offset for better positioning
+        const yOffset = link.section === 'ai-at-work' ? -80 : -60
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
+        window.scrollTo({top: y, behavior: 'smooth'})
       }
     } else if (link.href.includes('#') && pathname !== '/') {
       // If we're not on homepage but the link has a hash, navigate first then handle scroll
@@ -192,8 +199,8 @@ export function LandingNav() {
               </DropdownMenuContent>
             </DropdownMenu> */}
 
-            {/* Sign Up/Sign In Button - changes based on current page */}
-            <Link href={pathname === '/contact-us' ? '/contact-us' : '/contact-us'}>
+            {/* Contact Us Button */}
+            <Link href="/book-demo">
               <Button 
                 size="sm"
                 className="bg-white text-black hover:bg-gray-100 font-medium rounded-lg transition-all duration-500 ease-in-out"
@@ -203,7 +210,7 @@ export function LandingNav() {
                   padding: `0 calc(1rem - 0.25rem * ${scrollRatio})`
                 }}
               >
-                {pathname === '/contact-us' ? 'CONTACT US' : 'CONTACT US'}
+                CONTACT US
               </Button>
             </Link>
           </div>

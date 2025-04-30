@@ -337,10 +337,23 @@ export function AnimatedHorizontalCards({
           }
         }
       );
+      
+      // Set scroll to top (first message)
+      if (chatRef.current) {
+        chatRef.current.scrollTop = 0;
+      }
     }, containerRef);
     
     return () => ctx.revert();
   }, []);
+
+  // Use effect to reset scroll position when active card changes
+  useEffect(() => {
+    const chatContainer = document.querySelector('.overflow-y-auto');
+    if (chatContainer) {
+      chatContainer.scrollTop = 0;
+    }
+  }, [activeCardIndex]);
 
   const handleCardClick = (index: number) => {
     setActiveCardIndex(index);

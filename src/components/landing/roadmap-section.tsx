@@ -36,7 +36,7 @@ export function RoadmapSection() {
               title="Self-Learning Agents"
               description="Advanced agents that adapt to new attack methodologies and the latest bug-finding reports. Continuously improving security coverage."
               position="right"
-              timeframe="April 2025"
+              timeframe="May 2025"
             />
             <RoadmapCard
               icon={<FileJson className={`h-10 w-10 text-${COLORS.accent}`} />}

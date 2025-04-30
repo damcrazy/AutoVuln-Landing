@@ -37,7 +37,7 @@ export default async function Home() {
   const timelineData = [
     {
       icon: <Brain className="h-6 w-6 text-primary" />,
-      title: "April 2025",
+      title: "May 2025",
       description: "",
       content: {title : "Self-Learning Agents", description : "Advanced agents that adapt to new attack methodologies and the latest bug-finding reports for improved detection."}
     },
@@ -85,10 +85,12 @@ export default async function Home() {
         </div>
         
         {/* Animated Landing Cards */}
-        <AnimatedLandingCards />
+        <section > 
+          <AnimatedLandingCards />
+        </section>
         
         {/* Agent Demonstration Section */}
-        <section className="w-full mt-24 mb-24">
+        <section id="ai-at-work" className="w-full mt-24 pt-24 mb-24" >
           <AnimatedHorizontalCards />
           
 

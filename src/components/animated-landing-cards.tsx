@@ -32,7 +32,7 @@ export function AnimatedLandingCards() {
 
   return (
     <motion.div 
-      className="relative w-full max-w-[800px] h-[800px] mx-auto"
+      className="relative w-full max-w-[1200px] h-[800px] mx-auto"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
@@ -40,7 +40,7 @@ export function AnimatedLandingCards() {
     >
       {/* Top left card */}
       <motion.div 
-        className="absolute left-0 top-0"
+        className="absolute left-10 top-0"
         variants={itemVariants}
       >
         <LandingCard 
@@ -53,7 +53,7 @@ export function AnimatedLandingCards() {
 
       {/* Top right card */}
       <motion.div 
-        className="absolute right-0 top-[100px]"
+        className="absolute right-10 top-[100px]"
         variants={itemVariants}
       >
         <LandingCard 
@@ -66,7 +66,7 @@ export function AnimatedLandingCards() {
 
       {/* Bottom left card - moved down */}
       <motion.div 
-        className="absolute left-0 top-[280px]"
+        className="absolute left-10 top-[280px]"
         variants={itemVariants}
       >
         <LandingCard 
@@ -79,7 +79,7 @@ export function AnimatedLandingCards() {
 
       {/* Bottom right card - adjusted to match left side spacing */}
       <motion.div 
-        className="absolute right-0 top-[400px]"
+        className="absolute right-10 top-[400px]"
         variants={itemVariants}
       >
         <LandingCard 
