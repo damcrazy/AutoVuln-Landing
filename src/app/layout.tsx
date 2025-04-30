@@ -1,32 +1,27 @@
-import { TempoInit } from "@/components/tempo-init";
-import { Providers } from "@/components/ui/providers";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Script from "next/script";
-import "./globals.css";
+import './globals.css'
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ["latin"] });
-
+const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
-  title: "AutoVuln - AI-Powered Penetration Testing Platform",
-  description:
-    "Revolutionizing automated security testing with AI agents that think like penetration testers.",
-};
+  title: 'Autovuln',
+  description: 'Security Testing and Vulnerability Analysis Platform',
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <Script src="https://api.tempolabs.ai/proxy-asset?url=https://storage.googleapis.com/tempo-public-assets/error-handling.js" />
-      <body className={`${inter.className} dark:bg-[#0a0c10]`}>
-        <Providers>
-          {children}
-          <TempoInit />
-        </Providers>
-      </body>
-    </html>
-  );
+
+          <html lang="en" className="h-full dark" suppressHydrationWarning>
+            <body className={`${inter.className} h-full`}>
+              <div className="h-full">
+                {children}
+              </div>
+              
+            </body>
+            </html>
+  )
 }

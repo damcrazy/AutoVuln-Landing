@@ -2,10 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .bg-grid-white {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
-  }
+/* *{
+  outline: 1px solid red;
+} */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer base {
@@ -27,41 +29,50 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 89.8%;
+    --custom-border: 0 0% 89.8%;
+    --glow-border: 36 81% 58%;
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
-    --radius: 0.5rem;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    
+    /* Custom linear gradient from the design image */
+    --gradient-stroke: linear-gradient(90deg, #FFFF2D 0%, #CDC3DA 34%, #EBA53D 61%, #FF0707 100%);
   }
-
   .dark {
-    --background: 210 40% 2%;
-    --foreground: 210 40% 98%;
-    --card: 210 40% 3.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 210 40% 3.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 210 40% 9%;
-    --secondary: 210 40% 14.9%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 210 40% 14.9%;
-    --muted-foreground: 210 40% 63.9%;
-    --accent: 210 40% 14.9%;
-    --accent-foreground: 210 40% 98%;
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 40% 14.9%;
-    --input: 210 40% 14.9%;
-    --ring: 210 40% 83.1%;
-    --chart-1: 195 70% 50%;
+    --border: 0 0% 14.9%;
+    --custom-border: 68 33% 22%;
+    --glow-border: 36 81% 58%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    
+    /* Keep the same gradient for dark mode or define a different one if needed */
+    --gradient-stroke: linear-gradient(90deg, #FFFF2D 0%, #CDC3DA 34%, #EBA53D 61%, #FF0707 100%);
   }
 }
 
@@ -72,4 +83,50 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.clip-path-triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+/* Simple gradient border bottom */
+.border-b-gradient {
+  border-bottom: 1px solid;
+  border-image: var(--gradient-stroke) 0 0 1 0;
+  border-image-slice: 1;
+}
+
+/* Custom border image gradient utility class */
+.border-image-gradientStroke {
+  border-image-source: var(--gradient-stroke);
+  border-image-slice: 1;
+  border-width: 1px;
+  border-style: solid;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Grid pattern for temp landing page */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Hide scrollbars but keep scrolling functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
 }
