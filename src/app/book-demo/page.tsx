@@ -11,7 +11,7 @@ export default function BookDemo() {
       <div className="container mx-auto pt-24 px-4 flex-1">
         <div className="calendly-container w-full max-w-4xl mx-auto" style={{ height: "900px" }}>
           <InlineWidget 
-            url="https://calendly.com/kalyanb2000" 
+            url="https://calendly.com/admin-autovuln" 
             styles={{ height: '900px' }}
             pageSettings={{
               backgroundColor: '121212',
