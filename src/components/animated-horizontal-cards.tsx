@@ -179,7 +179,7 @@ export function AnimatedHorizontalCards({
         },
         {
             "agent": "exploit_executor_agent",
-            "message": "XXE script execution output:\n```\nexitcode: 0 (execution succeeded)\nCode output: [*] Sending XXE payload to the target...\n[-] Server responded with status 400. The payload may not have been processed.\nResponse content:\n\"Invalid product ID: root:x:0:0:root:/root:/bin/bash\\ndaemon:x:1:1:...\\npeter:x:12001:12001::/home/peter:/bin/bash\\n...\"\n```\n**Summary**: Server responded with HTTP 400, but the error message unexpectedly contained the content of `/etc/passwd`, confirming XXE vulnerability."
+            "message": "XXE script execution output:\n```\nexitcode: 0 (execution succeeded)\nCode output: [*] Sending XXE payload to the target...\n[-] Server responded with status 400. The payload may not have been processed.\nResponse content:\n\"Invalid product ID: root:x:0:0:root:/root:/bin/bash\\ndaemon:x:1:1:... \\npeter:x:12001:12001::/home/peter:/bin/bash\\n...\"\n```\n**Summary**: Server responded with HTTP 400, but the error message unexpectedly contained the content of `/etc/passwd`, confirming XXE vulnerability."
         },
         {
             "agent": "result_analyzer_agent",

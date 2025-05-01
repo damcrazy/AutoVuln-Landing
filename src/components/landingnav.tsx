@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { Moon, Sun } from "lucide-react"
+import { Menu, Moon, Sun, X } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
@@ -14,6 +14,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet"
 
 const LandingNavLinks = [
   {
@@ -43,6 +49,7 @@ export function LandingNav() {
   const { setTheme } = useTheme()
   const [scrollRatio, setScrollRatio] = useState(0)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const router = useRouter()
   const pathname = usePathname()
 
@@ -138,8 +145,8 @@ export function LandingNav() {
             </Link>
           </div>
 
-          {/* Main Navigation - Center */}
-          <div className="flex-1 flex items-center justify-center space-x-10">
+          {/* Main Navigation - Center (hidden on mobile) */}
+          <div className="flex-1 items-center justify-center space-x-10 hidden md:flex">
             {LandingNavLinks.map((link) => (
               <Link 
                 key={link.href} 
@@ -157,50 +164,8 @@ export function LandingNav() {
           
           {/* Controls - Right */}
           <div className="flex-1 flex items-center justify-end space-x-4">
-            {/* Theme Toggle Button */}
-            {/* <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
-                  className="text-white transition-all duration-500 ease-in-out"
-                  style={{ 
-                    height: `calc(2rem - 0.25rem * ${scrollRatio})`,
-                    width: `calc(2rem - 0.25rem * ${scrollRatio})`
-                  }}
-                >
-                  <Sun 
-                    className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" 
-                    style={{ 
-                      height: `calc(1rem - 0.125rem * ${scrollRatio})`,
-                      width: `calc(1rem - 0.125rem * ${scrollRatio})`
-                    }}
-                  />
-                  <Moon 
-                    className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" 
-                    style={{ 
-                      height: `calc(1rem - 0.125rem * ${scrollRatio})`,
-                      width: `calc(1rem - 0.125rem * ${scrollRatio})`
-                    }}
-                  />
-                  <span className="sr-only">Toggle theme</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setTheme("light")}>
-                  Light
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("dark")}>
-                  Dark
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("system")}>
-                  System
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu> */}
-
-            {/* Contact Us Button */}
-            <Link href="/book-demo">
+            {/* Contact Us Button (hidden on mobile) */}
+            <Link href="/book-demo" className="hidden md:block">
               <Button 
                 size="sm"
                 className="bg-white text-black hover:bg-gray-100 font-medium rounded-lg transition-all duration-500 ease-in-out"
@@ -213,6 +178,61 @@ export function LandingNav() {
                 CONTACT US
               </Button>
             </Link>
+
+            {/* Mobile menu button */}
+            <Sheet>
+              <SheetTrigger asChild className="md:hidden">
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="text-white md:hidden"
+                >
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Toggle menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[250px] bg-black/95 border-gray-800 p-0">
+                <div className="flex flex-col h-full">
+                  <div className="p-6 border-b border-gray-800">
+                    <div className="flex items-center">
+                      <Image 
+                        src="/logo.png" 
+                        alt="Autovuln Logo"
+                        width={32}
+                        height={32}
+                        className="mr-3"
+                      />
+                      <span className="text-xl text-white font-semibold">Autovuln</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col p-6 space-y-6 flex-grow">
+                    {LandingNavLinks.map((link) => (
+                      <SheetClose asChild key={link.href}>
+                        <Link 
+                          href={link.href} 
+                          onClick={(e) => handleNavClick(e, link)}
+                          className="text-white text-lg font-medium uppercase tracking-wider"
+                        >
+                          {link.label}
+                        </Link>
+                      </SheetClose>
+                    ))}
+                  </div>
+                  <div className="p-6 border-t border-gray-800">
+                    <SheetClose asChild>
+                      <Link href="/book-demo" className="w-full">
+                        <Button 
+                          size="default"
+                          className="bg-white text-black hover:bg-gray-100 font-medium rounded-lg w-full"
+                        >
+                          CONTACT US
+                        </Button>
+                      </Link>
+                    </SheetClose>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </nav>
